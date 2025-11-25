@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LayoutDashboard, TrendingUp, Newspaper, BrainCircuit, Activity } from 'lucide-react';
+import { TrendingUp, Newspaper, BrainCircuit, Activity } from 'lucide-react';
 import { AnalysisState, StockData } from './types';
 import { generateStockData } from './utils/dataGenerator';
 import { analyzeStockWithGemini } from './services/geminiService';
@@ -42,7 +42,7 @@ function App() {
                 ...analysis.sentiment,
                 status: 'success',
                 data: { type: 'sentiment', ...result.sentiment },
-                sources: result.sources, // Grounding sources shared across cards or specific if parsed? Shared is fine.
+                sources: result.sources,
             },
             news: {
                 ...analysis.news,
@@ -75,18 +75,46 @@ function App() {
     <div className="min-h-screen bg-black text-gray-200 font-mono p-4 md:p-8 selection:bg-terminal-green selection:text-black">
       <header className="mb-8 border-b border-terminal-dim pb-4 flex justify-between items-end">
         <div>
-            <h1 className="text-4xl font-bold text-white tracking-tighter flex items-center gap-3">
-                <LayoutDashboard className="text-terminal-green w-8 h-8" />
-                SAMI<span className="text-terminal-green">TRADING</span>
-            </h1>
-            <p className="text-sm text-gray-500 mt-1 uppercase tracking-widest">AI-Powered Institutional Analysis</p>
+            <div className="flex items-center gap-6">
+                {/* Custom Old Money ST Crest Logo */}
+                <svg className="w-24 h-24 text-terminal-green shrink-0" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1">
+                    {/* The Crown */}
+                    <path d="M70 60 L70 50 L100 40 L130 50 L130 60 Q100 70 70 60 Z" fill="none" strokeWidth="2" />
+                    <circle cx="70" cy="50" r="3" fill="currentColor" stroke="none" />
+                    <circle cx="100" cy="40" r="4" fill="currentColor" stroke="none" />
+                    <circle cx="130" cy="50" r="3" fill="currentColor" stroke="none" />
+
+                    {/* The Laurel Wreath (Abstracted for modernity + heritage) */}
+                    <path d="M100 170 Q40 170 40 100 Q40 50 80 40" strokeWidth="1.5" strokeLinecap="round" opacity="0.8"/>
+                    <path d="M100 170 Q160 170 160 100 Q160 50 120 40" strokeWidth="1.5" strokeLinecap="round" opacity="0.8"/>
+                    
+                    {/* Decorative Leaf Accents */}
+                    <path d="M40 100 L30 95 M40 120 L30 115 M160 100 L170 95 M160 120 L170 115" strokeWidth="1" opacity="0.5"/>
+
+                    {/* The Monogram */}
+                    <text x="100" y="130" textAnchor="middle" fontFamily="'Cinzel', serif" fontSize="80" fontWeight="700" fill="currentColor" stroke="none" letterSpacing="-4">ST</text>
+                    
+                    {/* Underline & Est */}
+                    <line x1="75" y1="140" x2="125" y2="140" strokeWidth="1" opacity="0.5" />
+                    <text x="100" y="155" textAnchor="middle" fontFamily="'Cinzel', serif" fontSize="10" letterSpacing="4" fill="currentColor" stroke="none">MMXXIV</text>
+                </svg>
+                
+                <div className="flex flex-col justify-center h-20">
+                    <h1 className="text-5xl font-bold text-white tracking-tighter font-serif">
+                        SAMI<span className="text-terminal-green font-mono">TRADING</span>
+                    </h1>
+                    <p className="text-xs text-gray-500 mt-1 uppercase tracking-[0.3em] font-serif border-l-2 border-terminal-dim pl-2 ml-1">
+                        Royal Investment Standard
+                    </p>
+                </div>
+            </div>
         </div>
         <div className="text-right hidden sm:block">
-            <div className="flex items-center space-x-2 text-xs text-terminal-green">
+            <div className="flex items-center space-x-2 text-xs text-terminal-green justify-end">
                 <span className="w-2 h-2 rounded-full bg-terminal-green animate-pulse"></span>
                 <span>SYSTEM ONLINE</span>
             </div>
-            <p className="text-[10px] text-gray-600">v3.1.0 // GEMINI POWERED</p>
+            <p className="text-[10px] text-gray-600 mt-1">v3.1.0 // GEMINI POWERED</p>
         </div>
       </header>
 
