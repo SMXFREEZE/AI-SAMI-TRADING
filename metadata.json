@@ -1,0 +1,5 @@
+{
+  "name": "Sami Trading Terminal",
+  "description": "A high-performance trading dashboard featuring a 3-Analyst AI Council for sentiment, news, and strategy analysis using Hugging Face models.",
+  "requestFramePermissions": []
+}
