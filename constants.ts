@@ -5,10 +5,9 @@ export const MODEL_SENTIMENT_URL = "https://api-inference.huggingface.co/models/
 export const MODEL_NEWS_URL = "https://api-inference.huggingface.co/models/mrm8488/distilroberta-finetuned-financial-news-sentiment-analysis";
 export const MODEL_STRATEGY_URL = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta";
 
-// Access Token - In a real app, this should be in process.env
-// For this demo, we assume the user has a token or we use a public inference tier (which might be rate limited)
-// We will look for a token in the environment variable.
-export const HF_API_TOKEN = process.env.REACT_APP_HF_TOKEN || '';
+// Access Token - FIXED FOR VITE
+// We changed this from process.env to import.meta.env so it works with your tech stack
+export const HF_API_TOKEN = import.meta.env.VITE_HF_TOKEN || '';
 
 export const TICKER_MAPPING: TickerMap = {
   'apple': 'AAPL',
